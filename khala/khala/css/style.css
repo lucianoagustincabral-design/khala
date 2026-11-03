@@ -1,0 +1,661 @@
+/* ==============================
+   CONFIGURACIÓN GENERAL
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fffafa;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+
+/* ==============================
+   BARRA SUPERIOR
+   ============================== */
+
+.barra-superior {
+    background-color: #222;
+    color: white;
+
+    text-align: center;
+
+    padding: 9px 20px;
+
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+
+/* ==============================
+   HEADER
+   ============================== */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 60px;
+    background-color: #fffafa;
+}
+
+#boton-menu {
+    display: none;
+}
+
+
+
+
+.logo {
+    text-decoration: none;
+
+    color: #d88c9a;
+
+    font-size: 32px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 15px;
+
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #d88c9a;
+}
+
+.carrito {
+    text-decoration: none;
+
+    font-size: 20px;
+
+    transition: transform 0.3s;
+}
+
+.carrito:hover {
+    transform: scale(1.1);
+}
+
+
+/* ==============================
+   HERO
+   ============================== */
+
+.hero {
+    min-height: 600px;
+
+    background-image: url("../img/conjunto.webp");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-contenido {
+    background-color: rgba(255, 250, 250, 0.85);
+
+    padding: 45px 60px;
+}
+
+.hero-subtitulo {
+    color: #d88c9a;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.hero h2 {
+    font-size: 48px;
+
+    color: #222;
+
+    margin-bottom: 15px;
+}
+
+.hero-descripcion {
+    color: #666;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+.hero-boton {
+    display: inline-block;
+
+    background-color: #d88c9a;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 13px 32px;
+
+    font-size: 15px;
+
+    transition: background-color 0.3s;
+}
+
+.hero-boton:hover {
+    background-color: #b96f7d;
+}
+
+
+/* ==============================
+   COLECCIÓN
+   ============================== */
+
+.categorias {
+    padding: 90px 60px;
+
+    text-align: center;
+}
+
+.categorias h2 {
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 45px;
+
+    color: #333;
+}
+
+.categorias-container {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* TARJETAS */
+
+.categorias-container article {
+    background-color: white;
+
+    overflow: hidden;
+
+    transition: transform 0.3s;
+}
+
+.categorias-container article:hover {
+    transform: translateY(-5px);
+}
+
+
+/* IMÁGENES */
+
+.categorias-container article img {
+    width: 100%;
+
+    height: 330px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* NOMBRE */
+
+.categorias-container article h3 {
+    color: #333;
+
+    padding: 18px 10px;
+
+    font-size: 16px;
+
+    font-weight: normal;
+}
+
+
+/* ==============================
+   PRODUCTOS DESTACADOS
+   ============================== */
+
+.destacados {
+    padding: 90px 60px;
+
+    text-align: center;
+
+    background-color: #ffffff;
+}
+
+.destacados h2 {
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 45px;
+
+    color: #333;
+}
+
+.productos-container {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+
+/* PRODUCTO */
+
+.producto {
+    background-color: #fffafa;
+
+    overflow: hidden;
+
+    transition: transform 0.3s;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+
+/* IMAGEN */
+
+.producto img {
+    width: 100%;
+
+    height: 380px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* INFORMACIÓN */
+
+.producto-info {
+    padding: 20px;
+}
+
+.producto-info h3 {
+    color: #333;
+
+    font-size: 17px;
+
+    font-weight: normal;
+
+    margin-bottom: 8px;
+}
+
+.producto-info p {
+    color: #555;
+
+    font-size: 16px;
+
+    margin-bottom: 18px;
+}
+
+
+/* BOTÓN */
+
+.producto-boton {
+    display: inline-block;
+
+    color: #333;
+
+    border: 1px solid #333;
+
+    padding: 10px 25px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: all 0.3s;
+}
+
+.producto-boton:hover {
+    background-color: #333;
+
+    color: white;
+}
+
+
+/* ==============================
+   SOBRE KHALA
+   ============================== */
+
+.sobre-khala {
+    padding: 110px 60px;
+
+    text-align: center;
+
+    background-color: #fffafa;
+}
+
+.sobre-contenido {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+.sobre-subtitulo {
+    color: #d88c9a;
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.sobre-khala h2 {
+    font-size: 36px;
+
+    font-weight: normal;
+
+    color: #333;
+
+    margin-bottom: 25px;
+}
+
+.sobre-khala p {
+    color: #666;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+.sobre-boton {
+    display: inline-block;
+
+    color: #333;
+
+    border: 1px solid #333;
+
+    padding: 11px 28px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: all 0.3s;
+}
+
+.sobre-boton:hover {
+    background-color: #333;
+
+    color: white;
+}
+
+
+/* ==============================
+   CONTACTO
+   ============================== */
+
+.contacto {
+    padding: 90px 60px;
+
+    text-align: center;
+
+    background-color: white;
+}
+
+.contacto h2 {
+    font-size: 32px;
+
+    font-weight: normal;
+
+    margin-bottom: 20px;
+}
+
+.contacto p {
+    color: #666;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+.contacto-boton {
+    display: inline-block;
+
+    background-color: #d88c9a;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 28px;
+
+    font-size: 14px;
+
+    transition: background-color 0.3s;
+}
+
+.contacto-boton:hover {
+    background-color: #b96f7d;
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+footer {
+    background-color: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 13px;
+}
+
+
+/* ==============================
+   RESPONSIVE - TABLET
+   ============================== */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 20px 30px;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    .categorias-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .productos-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+    
+#boton-menu {
+    display: block;
+}
+
+
+/* ==============================
+   RESPONSIVE - CELULAR
+   ============================== */
+
+@media (max-width: 600px) {
+
+    #boton-menu {
+        display: block;
+    }
+
+    .barra-superior {
+        font-size: 10px;
+    }
+
+ 
+
+    /* HEADER */
+
+    header {
+        padding: 20px;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .carrito {
+        display: none;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero-contenido {
+        padding: 30px 25px;
+    }
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .hero-descripcion {
+        font-size: 15px;
+    }
+
+
+    /* COLECCIÓN */
+
+    .categorias {
+        padding: 70px 20px;
+    }
+
+    .categorias h2 {
+        font-size: 28px;
+    }
+
+    .categorias-container {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .categorias-container article img {
+        height: 400px;
+    }
+
+
+    /* PRODUCTOS */
+
+    .destacados {
+        padding: 70px 20px;
+    }
+
+    .destacados h2 {
+        font-size: 28px;
+    }
+
+    .productos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .producto img {
+        height: 420px;
+    }
+
+
+    /* SOBRE KHALA */
+
+    .sobre-khala {
+        padding: 80px 25px;
+    }
+
+    .sobre-khala h2 {
+        font-size: 30px;
+    }
+
+    .sobre-khala p {
+        font-size: 15px;
+    }
+
+
+    /* CONTACTO */
+
+    .contacto {
+        padding: 70px 25px;
+    }
+
+    .contacto h2 {
+        font-size: 28px;
+    }
+
+    .contacto p {
+        font-size: 15px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 20px;
+    }
+
+}
