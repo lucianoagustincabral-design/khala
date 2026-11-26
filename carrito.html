@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi carrito | Khala</title>
+
+    <link rel="stylesheet" href="../khala/css/style.css">
+    <link rel="stylesheet" href="../khala/css/carrito.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="barra-superior">
+        <p>
+            Envíos gratis a todo el país · 3 cuotas sin interés · 10% OFF por transferencia
+        </p>
+    </div>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <a href="index.html" class="logo">Khala</a>
+
+        <nav id="menu">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#tienda">Tienda</a>
+            <a href="index.html#nosotros">Nosotros</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+
+        <div class="acciones-header">
+
+            <div class="opciones-cuenta">
+                <a href="cuenta.html" class="cuenta">Mi cuenta</a>
+            </div>
+
+            <a href="carrito.html" class="carrito" aria-label="Ver carrito">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 9H6"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 9V7a3 3 0 0 1 6 0v2"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"/>
+                    <circle cx="10" cy="20" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="20" r="1" fill="currentColor"/>
+                </svg>
+
+                <span class="carrito-contador">0</span>
+
+            </a>
+
+            <button id="modo-oscuro" class="modo-oscuro"
+                type="button" aria-label="Cambiar tema" title="Cambiar tema">
+
+                <span class="icono-tema">☾</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main class="pagina-carrito">
+
+        <h1>Mi carrito</h1>
+
+        <p class="carrito-subtitulo">
+            Revisá tus productos antes de continuar.
+        </p>
+
+        <!-- CARRITO VACÍO -->
+
+        <section id="carrito-vacio" class="carrito-vacio" hidden>
+
+            <div class="carrito-icono">♡</div>
+
+            <h2>Tu carrito está esperando...</h2>
+
+            <p>
+                Todavía no agregaste ningún producto.
+                ¡Tenemos conjuntos esperando por vos!
+            </p>
+
+            <a href="index.html#tienda" class="boton-volver">
+                Descubrir colección
+            </a>
+
+        </section>
+
+        <!-- CARRITO CON PRODUCTOS -->
+
+        <section id="carrito-con-productos" hidden>
+
+            <div id="lista-carrito-pagina"></div>
+
+            <div class="resumen-carrito">
+
+                <h2>Resumen de compra</h2>
+
+                <p>
+                    Productos:
+                    <span id="cantidad-carrito-pagina">0</span>
+                </p>
+
+                <h3>
+                    Total:
+                    <span id="total-carrito-pagina">$0</span>
+                </h3>
+
+                <button id="finalizar-compra" type="button">
+                    Finalizar compra
+                </button>
+
+                <a href="index.html#tienda">
+                    Seguir comprando
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>© 2026 Khala - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+<script src="../khala/js/tema.js"></script>
+<script src="../khala/js/logica.js"></script>
+<script src="../khala/js/sesion.js"></script>
+<script src="../khala/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Khala | Mi cuenta</title>
+
+    <link rel="stylesheet" href="../khala/css/style.css">
+    <link rel="stylesheet" href="../khala/css/cuenta.css">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header class="encabezado-cuenta">
+
+        <a href="index.html" class="logo-cuenta">
+            KHALA
+        </a>
+
+        <div class="acciones-cuenta-header">
+
+            <a href="index.html" class="volver-tienda">
+                Volver a la tienda
+            </a>
+
+            <button id="modo-oscuro" class="modo-oscuro"
+                type="button" aria-label="Cambiar tema" title="Cambiar tema">
+
+                <span class="icono-tema">☾</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- CONTENIDO -->
+
+    <main class="contenedor-cuenta">
+
+        <section class="caja-cuenta">
+
+            <div class="presentacion-cuenta">
+
+                <h1>Khala</h1>
+
+                <p>Un espacio pensado para vos</p>
+
+            </div>
+
+            <!-- INICIO DE SESIÓN -->
+
+            <div id="formulario-login" class="formulario-cuenta">
+
+                <h2>Bienvenida de nuevo</h2>
+
+                <p class="subtitulo-cuenta">
+                    Ingresá a tu cuenta para continuar.
+                </p>
+
+                <form id="form-login">
+
+                    <div class="campo-cuenta">
+
+                        <label for="email-login">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email-login"
+                            placeholder="tu@email.com"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo-cuenta">
+
+                        <label for="password-login">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password-login"
+                            placeholder="Ingresá tu contraseña"
+                            required
+                        >
+
+                    </div>
+
+                    <button type="submit" class="boton-cuenta">
+                        Iniciar sesión
+                    </button>
+
+                </form>
+
+                <p class="cambiar-formulario">
+
+                    ¿No tenés una cuenta?
+
+                    <button id="mostrar-registro" type="button">
+                        Registrate
+                    </button>
+
+                </p>
+
+            </div>
+
+            <!-- REGISTRO -->
+
+            <div id="formulario-registro" class="formulario-cuenta oculto">
+
+                <h2>Crear una cuenta</h2>
+
+                <p class="subtitulo-cuenta">
+                    Sumate a la experiencia Khala.
+                </p>
+
+                <form id="form-registro">
+
+                    <div class="campo-cuenta">
+
+                        <label for="nombre-registro">
+                            Nombre
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre-registro"
+                            placeholder="Tu nombre"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo-cuenta">
+
+                        <label for="apellido-registro">
+                            Apellido
+                        </label>
+
+                        <input
+                            type="text"
+                            id="apellido-registro"
+                            placeholder="Tu apellido"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo-cuenta">
+
+                        <label for="email-registro">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email-registro"
+                            placeholder="tu@email.com"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo-cuenta">
+
+                        <label for="password-registro">
+                            Contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password-registro"
+                            placeholder="Creá una contraseña"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="campo-cuenta">
+
+                        <label for="confirmar-password">
+                            Confirmar contraseña
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmar-password"
+                            placeholder="Repetí tu contraseña"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+                    <button type="submit" class="boton-cuenta">
+                        Crear mi cuenta
+                    </button>
+
+                </form>
+
+                <p class="cambiar-formulario">
+
+                    ¿Ya tenés una cuenta?
+
+                    <button id="mostrar-login" type="button">
+                        Iniciá sesión
+                    </button>
+
+                </p>
+
+            </div>
+
+            <!-- MENSAJES -->
+
+            <p id="mensaje-cuenta"></p>
+
+            <!-- INVITADA -->
+
+            <div class="continuar-invitado">
+
+                <a href="index.html">
+                    Continuar como invitada
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer-cuenta">
+        <p>© 2026 Khala - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+   <script src="../khala/js/tema.js"></script>
+<script src="../khala/js/logica.js"></script>
+<script src="../khala/js/sesion.js"></script>
+<script src="../khala/js/script.js"></script>
+
+</body>
+</html>
