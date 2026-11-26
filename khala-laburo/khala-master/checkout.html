@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finalizar compra | Khala</title>
+
+    <link rel="stylesheet" href="khala/khala/css/style.css">
+    <link rel="stylesheet" href="khala/khala/css/checkout.css">
+</head>
+
+<body>
+
+    <div class="barra-superior">
+        <p>
+            Envíos gratis a todo el país · 3 cuotas sin interés · 10% OFF por transferencia
+        </p>
+    </div>
+
+    <header class="encabezado-checkout">
+        <a href="index.html" class="logo">Khala</a>
+
+        <div class="acciones-header">
+            <a href="carrito.html" class="enlace-volver">← Volver al carrito</a>
+
+            <button id="modo-oscuro" class="modo-oscuro"
+                type="button" aria-label="Cambiar tema" title="Cambiar tema">
+                <span class="icono-tema">☾</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="contenedor-checkout">
+
+        <div class="checkout-cabecera">
+            <h1>Finalizar compra</h1>
+            <p>Completá tus datos y elegí cómo querés abonar tu pedido.</p>
+        </div>
+
+        <div id="checkout-vacio" class="checkout-vacio" hidden>
+            <h2>No tenés productos en el carrito</h2>
+            <p>Agregá algún conjunto antes de pasar por el checkout.</p>
+            <a href="index.html#tienda" class="boton-principal">Ir a la tienda</a>
+        </div>
+
+        <div id="checkout-grid" class="checkout-grid">
+
+            <!-- FORMULARIO DE ENTREGA Y MEDIO DE PAGO -->
+            <section class="tarjeta-checkout">
+                <h2>Datos de entrega y pago</h2>
+
+                <form id="form-checkout">
+                    <div class="campo-form">
+                        <label for="comprador-nombre">Nombre y apellido</label>
+                        <input type="text" id="comprador-nombre" required placeholder="Ej. Valentina Gómez">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="comprador-email">Correo electrónico</label>
+                        <input type="email" id="comprador-email" required placeholder="tu@email.com">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="comprador-telefono">Teléfono / WhatsApp</label>
+                        <input type="tel" id="comprador-telefono" required placeholder="Ej. 11 5555 1234">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="comprador-direccion">Dirección de entrega</label>
+                        <input type="text" id="comprador-direccion" required placeholder="Calle, altura, piso/depto, localidad">
+                    </div>
+
+                    <div class="campo-form">
+                        <label for="medio-pago">Medio de pago</label>
+                        <select id="medio-pago">
+                            <option value="transferencia">Transferencia bancaria (10% OFF)</option>
+                            <option value="tarjeta">Tarjeta / Mercado Pago (3 cuotas sin interés)</option>
+                        </select>
+                    </div>
+
+                    <div id="info-transferencia" class="caja-instruccion">
+                        <strong>Datos para transferencia:</strong>
+                        <p>Alias: <code>KHALA.TIENDA.MP</code> · 10% de descuento aplicado automáticamente.</p>
+                    </div>
+
+                    <div id="info-tarjeta" class="caja-instruccion" hidden>
+                        <strong>Tarjeta / Mercado Pago:</strong>
+                        <p>Hasta 3 cuotas sin interés con tarjetas habilitadas.</p>
+                    </div>
+
+                    <button type="submit" class="boton-principal">
+                        Confirmar pedido
+                    </button>
+                </form>
+            </section>
+
+            <!-- RESUMEN DEL PEDIDO -->
+            <aside class="tarjeta-checkout resumen-lateral">
+                <h2>Tu pedido</h2>
+
+                <div id="lista-resumen-checkout" class="lista-resumen"></div>
+
+                <div class="linea-resumen">
+                    <span>Productos</span>
+                    <strong id="checkout-cantidad">0</strong>
+                </div>
+
+                <div class="linea-resumen">
+                    <span>Subtotal</span>
+                    <strong id="checkout-subtotal">$0</strong>
+                </div>
+
+                <div id="fila-descuento" class="linea-resumen descuento" hidden>
+                    <span>Descuento transferencia (10%)</span>
+                    <strong id="checkout-descuento">-$0</strong>
+                </div>
+
+                <div class="linea-resumen total">
+                    <span>Total a pagar</span>
+                    <strong id="checkout-total">$0</strong>
+                </div>
+
+                <p id="checkout-cuotas" class="texto-cuotas"></p>
+            </aside>
+
+        </div>
+
+        <!-- COMPROBANTE FINAL -->
+        <section id="orden-confirmada" class="tarjeta-checkout comprobante" hidden>
+            <div class="badge-ok">✓ Pedido confirmado</div>
+            <h2>¡Gracias por elegir Khala!</h2>
+            <p id="resumen-orden-texto"></p>
+            <a href="index.html#tienda" class="boton-principal">Seguir comprando</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Khala - Todos los derechos reservados.</p>
+    </footer>
+
+ <script src="khala/khala/js/tema.js"></script>
+    <script src="khala/khala/js/logica.js"></script>
+    <script src="khala/khala/js/sesion.js"></script>
+    <script src="khala/khala/js/checkout.js"></script>
+</body>
+</html>

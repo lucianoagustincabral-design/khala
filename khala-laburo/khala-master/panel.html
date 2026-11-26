@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Khala</title>
+    <link rel="stylesheet" href="khala/khala/css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #141213;
+            color: #f4eef1;
+            min-height: 100vh;
+        }
+
+        body.claro,
+        body.light-mode,
+        body.tema-claro {
+            background-color: #f5f2f4;
+            color: #1e191c;
+        }
+
+        header {
+            background-color: #1e1a1c;
+            border-bottom: 1px solid #332c30;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        body.claro header,
+        body.light-mode header,
+        body.tema-claro header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e4dce1;
+        }
+
+        header nav {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        header nav > a {
+            color: #f4eef1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        body.claro header nav > a,
+        body.light-mode header nav > a,
+        body.tema-claro header nav > a {
+            color: #1e191c;
+        }
+
+        header nav > a:hover {
+            color: #e093a5;
+        }
+
+        .barra-derecha-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .opciones-cuenta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #e2d8dd;
+        }
+
+        body.claro .opciones-cuenta,
+        body.light-mode .opciones-cuenta,
+        body.tema-claro .opciones-cuenta {
+            color: #3a3237;
+        }
+
+        .opciones-cuenta a {
+            color: #e093a5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .opciones-cuenta button,
+        #seccion-pedidos button,
+        #resumen-auditoria button {
+            background-color: #d88b9d;
+            color: #191114;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.12s ease, opacity 0.15s ease;
+        }
+
+        .opciones-cuenta button:hover,
+        #seccion-pedidos button:hover,
+        #resumen-auditoria button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        #btn-tema-panel {
+            background-color: #2b2528;
+            color: #f4eef1;
+            border: 1px solid #443b40;
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        body.claro #btn-tema-panel,
+        body.light-mode #btn-tema-panel,
+        body.tema-claro #btn-tema-panel {
+            background-color: #f3edf0;
+            color: #1e191c;
+            border: 1px solid #d8cdd3;
+        }
+
+        #panel-protegido {
+            max-width: 1060px;
+            margin: 32px auto;
+            padding: 0 24px 56px;
+        }
+
+        .encabezado-panel {
+            margin-bottom: 24px;
+        }
+
+        #panel-protegido h1 {
+            margin: 0 0 6px;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        body.claro #panel-protegido h1,
+        body.light-mode #panel-protegido h1,
+        body.tema-claro #panel-protegido h1 {
+            color: #1a1518;
+        }
+
+        #bienvenida-admin {
+            margin: 0;
+            color: #b7aab1;
+            font-size: 0.95rem;
+        }
+
+        body.claro #bienvenida-admin,
+        body.light-mode #bienvenida-admin,
+        body.tema-claro #bienvenida-admin {
+            color: #63585f;
+        }
+
+        #resumen-metricas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        #resumen-metricas > div {
+            background-color: #1f1b1d;
+            border: 1px solid #352e32;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #f4eef1;
+        }
+
+        body.claro #resumen-metricas > div,
+        body.light-mode #resumen-metricas > div,
+        body.tema-claro #resumen-metricas > div {
+            background-color: #ffffff;
+            border: 1px solid #e4dce1;
+            color: #1e191c;
+        }
+
+        #resumen-metricas span {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #e295a7;
+        }
+
+        body.claro #resumen-metricas span,
+        body.light-mode #resumen-metricas span,
+        body.tema-claro #resumen-metricas span {
+            color: #b85d74;
+        }
+
+        #seccion-pedidos,
+        #resumen-auditoria {
+            background-color: #1f1b1d;
+            border: 1px solid #352e32;
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin-bottom: 24px;
+            color: #f4eef1;
+        }
+
+        body.claro #seccion-pedidos,
+        body.light-mode #seccion-pedidos,
+        body.tema-claro #seccion-pedidos,
+        body.claro #resumen-auditoria,
+        body.light-mode #resumen-auditoria,
+        body.tema-claro #resumen-auditoria {
+            background-color: #ffffff;
+            border: 1px solid #e4dce1;
+            color: #1e191c;
+        }
+
+        .cabecera-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        #seccion-pedidos h2,
+        #resumen-auditoria h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: inherit;
+        }
+
+        .tabla-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        #tabla-pedidos {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            color: inherit;
+        }
+
+        #tabla-pedidos th,
+        #tabla-pedidos td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid #312a2e;
+            color: inherit;
+        }
+
+        body.claro #tabla-pedidos th,
+        body.light-mode #tabla-pedidos th,
+        body.tema-claro #tabla-pedidos th,
+        body.claro #tabla-pedidos td,
+        body.light-mode #tabla-pedidos td,
+        body.tema-claro #tabla-pedidos td {
+            border-bottom: 1px solid #ece4e9;
+        }
+
+        #tabla-pedidos th {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #b7aab1;
+        }
+
+        body.claro #tabla-pedidos th,
+        body.light-mode #tabla-pedidos th,
+        body.tema-claro #tabla-pedidos th {
+            color: #6c6068;
+        }
+
+        #lista-auditoria {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #lista-auditoria li {
+            background-color: #161315;
+            border: 1px solid #2e272b;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            color: #ebe2e7;
+        }
+
+        body.claro #lista-auditoria li,
+        body.light-mode #lista-auditoria li,
+        body.tema-claro #lista-auditoria li {
+            background-color: #f8f4f6;
+            border: 1px solid #e7dfe4;
+            color: #241e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">← Volver a la tienda</a>
+            <div class="barra-derecha-header">
+                <div class="opciones-cuenta"></div>
+                <button id="btn-tema-panel" class="modo-oscuro" type="button" aria-label="Cambiar tema" title="Cambiar tema">
+                    <span id="icono-tema-panel">☀</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="panel-protegido" style="display: none;">
+        <div class="encabezado-panel">
+            <h1>Panel de Control — Khala</h1>
+            <p id="bienvenida-admin"></p>
+        </div>
+
+        <section id="resumen-metricas">
+            <div><strong>Pedidos:</strong> <span id="total-pedidos">0</span></div>
+            <div><strong>Eventos de acceso:</strong> <span id="total-eventos">0</span></div>
+        </section>
+
+        <section id="seccion-pedidos">
+            <div class="cabecera-seccion">
+                <h2>Pedidos / Compras</h2>
+                <button type="button" id="btn-limpiar-pedidos">Limpiar pedidos</button>
+            </div>
+            <div class="tabla-responsive">
+                <table id="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th>ID / Fecha</th>
+                            <th>Cliente / Medio</th>
+                            <th>Resumen</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-pedidos"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="resumen-auditoria">
+            <div class="cabecera-seccion">
+                <h2>Auditoría de Accesos</h2>
+                <button type="button" id="btn-limpiar-auditoria">Limpiar historial</button>
+            </div>
+            <ul id="lista-auditoria"></ul>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="khala/khala/js/tema.js"></script>
+    <script src="khala/khala/js/logica.js"></script>
+    <script src="khala/khala/js/sesion.js"></script>
+    <script src="khala/khala/js/panel.js"></script>
+    <script>
+        (function () {
+            const btnTema = document.getElementById("btn-tema-panel");
+            const iconoTema = document.getElementById("icono-tema-panel");
+            if (!btnTema) return;
+
+            function sincronizarIcono() {
+                const esClaro =
+                    document.body.classList.contains("claro") ||
+                    document.body.classList.contains("light-mode") ||
+                    document.body.classList.contains("tema-claro");
+                if (iconoTema) {
+                    iconoTema.textContent = esClaro ? "☾" : "☀";
+                }
+            }
+
+            btnTema.addEventListener("click", () => {
+                const botonGlobal = document.querySelector("#modo-oscuro, .modo-oscuro:not(#btn-tema-panel)");
+                if (botonGlobal) {
+                    botonGlobal.click();
+                } else {
+                    document.body.classList.toggle("claro");
+                    localStorage.setItem("temaKhala", document.body.classList.contains("claro") ? "claro" : "oscuro");
+                }
+                setTimeout(sincronizarIcono, 20);
+            });
+
+            window.addEventListener("DOMContentLoaded", () => {
+                const guardado = localStorage.getItem("temaKhala") || localStorage.getItem("tema");
+                if (guardado === "claro" || guardado === "light") {
+                    document.body.classList.add("claro");
+                }
+                sincronizarIcono();
+            });
+        })();
+    </script>
+</body>
+</html>

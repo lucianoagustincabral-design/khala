@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Khala | Ropa Interior Femenina</title>
+
+    <link rel="stylesheet" href="khala/khala/css/style.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+
+    <div class="barra-superior">
+        <p>
+            Envíos gratis a todo el país · 3 cuotas sin interés · 10% OFF por transferencia
+        </p>
+    </div>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <a href="#inicio" class="logo">Khala</a>
+
+        <button id="boton-menu" type="button" aria-label="Abrir menú">
+            ☰
+        </button>
+
+        <nav id="menu">
+            <a href="#inicio">Inicio</a>
+            <a href="#tienda">Tienda</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <div class="acciones-header">
+
+            <div class="opciones-cuenta">
+                <a href="cuenta.html" class="cuenta">Iniciar sesión</a>
+                <a href="cuenta.html" class="crear-cuenta">Crear cuenta</a>
+            </div>
+
+            <a href="carrito.html" class="carrito" aria-label="Ver carrito">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L21 9H6"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 9V7a3 3 0 0 1 6 0v2"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round"/>
+                    <circle cx="10" cy="20" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="20" r="1" fill="currentColor"/>
+                </svg>
+
+                <span class="carrito-contador">0</span>
+
+            </a>
+
+            <button id="modo-oscuro" class="modo-oscuro"
+                type="button" aria-label="Cambiar tema" title="Cambiar tema">
+
+                <span class="icono-tema">☾</span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- NOTIFICACIÓN DEL CARRITO -->
+
+    <div id="notificacion-carrito"
+        class="notificacion-carrito"
+        role="status"
+        aria-live="polite"
+        hidden>
+    </div>
+
+    <!-- VENTANA DEL PRODUCTO -->
+
+    <div id="modal-producto" class="modal-producto" hidden>
+
+        <div class="modal-contenido">
+
+            <button type="button" id="cerrar-modal" class="cerrar-modal">
+                ✕
+            </button>
+
+            <img id="modal-imagen" src="" alt="">
+
+            <div class="modal-info">
+
+                <h2 id="modal-nombre"></h2>
+
+                <p id="modal-precio"></p>
+
+                <button type="button" id="modal-agregar" class="producto-boton">
+                    Agregar al carrito
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+
+        <section id="inicio" class="hero">
+
+            <div class="hero-contenido">
+
+                <p class="hero-subtitulo">NUEVA COLECCIÓN</p>
+
+                <h2>Descubrí tu esencia</h2>
+
+                <p class="hero-descripcion">
+                    Elegancia, comodidad y estilo para sentirte vos.
+                </p>
+
+                <a href="#tienda" class="hero-boton">
+                    Ver colección
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- COLECCIÓN -->
+
+        <section id="tienda" class="categorias">
+
+            <h2>Nuestra colección</h2>
+
+            <div class="categorias-container">
+
+                <article>
+                    <img src="khala/khala/img/conjunto.webp"
+                        alt="Conjunto de ropa interior de algodón">
+                    <h3>Conjunto Algodón</h3>
+                </article>
+
+                <article>
+                    <img src="khala/khala/img/conjuntoSol.webp"
+                        alt="Conjunto Sol">
+                    <h3>Conjunto Sol</h3>
+                </article>
+
+                <article>
+                    <img src="khala/khala/img/conjuntoMila.webp"
+                        alt="Conjunto Mila">
+                    <h3>Conjunto Mila</h3>
+                </article>
+
+                <article>
+                    <img src="khala/khala/img/conjuntomoni.webp"
+                        alt="Conjunto Moni">
+                    <h3>Conjunto Moni</h3>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- PRODUCTOS DESTACADOS -->
+
+        <section class="destacados">
+
+            <h2>Productos destacados</h2>
+
+            <div class="productos-container">
+
+                <article class="producto">
+
+                    <img src="khala/khala/img/conjunto.webp" alt="Conjunto Khala">
+
+                    <div class="producto-info">
+
+                        <h3>Conjunto Khala</h3>
+
+                        <p>$25.000</p>
+
+                        <button type="button" class="producto-boton agregar-carrito">
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <article class="producto">
+
+                    <img src="khala/khala/img/conjuntoSol.webp" alt="Conjunto Sol">
+
+                    <div class="producto-info">
+
+                        <h3>Conjunto Sol</h3>
+
+                        <p>$30.000</p>
+
+                        <button type="button" class="producto-boton agregar-carrito">
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <article class="producto">
+
+                    <img src="khala/khala/img/conjuntoMila.webp" alt="Conjunto Mila">
+
+                    <div class="producto-info">
+
+                        <h3>Conjunto Mila</h3>
+
+                        <p>$28.000</p>
+
+                        <button type="button" class="producto-boton agregar-carrito">
+                            Agregar al carrito
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- SOBRE KHALA -->
+
+        <section id="nosotros" class="sobre-khala">
+
+            <div class="sobre-contenido">
+
+                <p class="sobre-subtitulo">CONOCÉ KHALA</p>
+
+                <h2>Una forma de sentirte vos</h2>
+
+                <p>
+                    En Khala creemos que la ropa interior es mucho más que una prenda.
+                    Creamos diseños que combinan comodidad, elegancia y estilo para
+                    acompañarte todos los días.
+                </p>
+
+                <a href="#contacto" class="sobre-boton">
+                    Conocé nuestra historia
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACTO -->
+
+        <section id="contacto" class="contacto">
+
+            <h2>Contacto</h2>
+
+            <p>¿Tenés alguna consulta? Escribinos y te ayudamos.</p>
+
+            <a href="mailto:contacto@khala.com" class="contacto-boton">
+                Contactanos
+            </a>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>© 2026 Khala - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="khala/khala/js/tema.js"></script>
+    <script src="khala/khala/js/logica.js"></script>
+    <script src="khala/khala/js/sesion.js"></script>
+    <script src="khala/khala/js/script.js"></script>
+</body>
+</html>
