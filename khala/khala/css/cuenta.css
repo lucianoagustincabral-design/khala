@@ -1,0 +1,388 @@
+
+/* =================================
+   CONFIGURACIÓN GENERAL
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fffafa;
+    font-family: Arial, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* =================================
+   ENCABEZADO
+================================= */
+
+.encabezado-cuenta {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #f0e3e5;
+}
+
+.logo-cuenta {
+    color: #d88c9a;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-decoration: none;
+}
+
+.acciones-cuenta-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.volver-tienda {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.volver-tienda:hover {
+    color: #d88c9a;
+}
+
+/* BOTÓN DE TEMA */
+
+.encabezado-cuenta .modo-oscuro {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ead6da;
+    border-radius: 50%;
+    background: transparent;
+    color: #a65d6d;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.encabezado-cuenta .modo-oscuro:hover {
+    background: #fff0f2;
+}
+
+.icono-tema {
+    display: block;
+    line-height: 1;
+}
+
+/* =================================
+   CONTENEDOR PRINCIPAL
+================================= */
+
+.contenedor-cuenta {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+/* =================================
+   CAJA DE CUENTA
+================================= */
+
+.caja-cuenta {
+    width: 100%;
+    max-width: 440px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(80, 40, 50, 0.08);
+    border: 1px solid #f4e5e8;
+}
+
+/* =================================
+   PRESENTACIÓN
+================================= */
+
+.presentacion-cuenta {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.presentacion-cuenta h1 {
+    color: #d88c9a;
+    font-size: 36px;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+}
+
+.presentacion-cuenta p {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* =================================
+   FORMULARIOS
+================================= */
+
+.formulario-cuenta h2 {
+    font-size: 23px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.subtitulo-cuenta {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* =================================
+   CAMPOS
+================================= */
+
+.campo-cuenta {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 19px;
+}
+
+.campo-cuenta label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.campo-cuenta input {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid #e5d6d9;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    background-color: #fffafa;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.campo-cuenta input:focus {
+    border-color: #d88c9a;
+    box-shadow: 0 0 0 3px rgba(216, 140, 154, 0.13);
+}
+
+.campo-cuenta input::placeholder {
+    color: #bbb;
+}
+
+/* =================================
+   BOTÓN PRINCIPAL
+================================= */
+
+.boton-cuenta {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    background-color: #d88c9a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.boton-cuenta:hover {
+    background-color: #c87585;
+    transform: translateY(-2px);
+}
+
+/* =================================
+   CAMBIAR FORMULARIO
+================================= */
+
+.cambiar-formulario {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 25px;
+}
+
+.cambiar-formulario button {
+    border: none;
+    background: none;
+    color: #d88c9a;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cambiar-formulario button:hover {
+    text-decoration: underline;
+}
+
+/* =================================
+   CONTINUAR COMO INVITADA
+================================= */
+
+.continuar-invitado {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.continuar-invitado a {
+    color: #777;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.continuar-invitado a:hover {
+    color: #d88c9a;
+}
+
+/* =================================
+   MENSAJES
+================================= */
+
+#mensaje-cuenta {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+    color: #c87585;
+}
+
+/* =================================
+   CLASES DE VISIBILIDAD
+================================= */
+
+.oculto {
+    display: none;
+}
+
+/* =================================
+   PIE DE PÁGINA
+================================= */
+
+.footer-cuenta {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-size: 12px;
+    background-color: #fff;
+    border-top: 1px solid #f0e3e5;
+}
+
+/* =================================
+   MODO OSCURO
+================================= */
+
+body.modo-noche {
+    background-color: #181619;
+    color: #eee;
+}
+
+body.modo-noche .encabezado-cuenta,
+body.modo-noche .footer-cuenta {
+    background-color: #222025;
+    border-color: #38333a;
+}
+
+body.modo-noche .caja-cuenta {
+    background-color: #29252a;
+    border-color: #494149;
+}
+
+body.modo-noche .formulario-cuenta h2,
+body.modo-noche .campo-cuenta label {
+    color: #f0c1cb;
+}
+
+body.modo-noche .campo-cuenta input {
+    background-color: #353037;
+    border-color: #514751;
+    color: #fff;
+}
+
+body.modo-noche .campo-cuenta input::placeholder {
+    color: #aaa;
+}
+
+body.modo-noche .volver-tienda,
+body.modo-noche .cambiar-formulario,
+body.modo-noche .continuar-invitado a {
+    color: #ccc;
+}
+
+body.modo-noche .continuar-invitado {
+    border-color: #494149;
+}
+
+body.modo-noche .encabezado-cuenta .modo-oscuro {
+    color: #f0c1cb;
+    border-color: #514751;
+}
+
+body.modo-noche .encabezado-cuenta .modo-oscuro:hover {
+    background: #49343d;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+
+    .encabezado-cuenta {
+        padding: 18px 5%;
+    }
+
+    .logo-cuenta {
+        font-size: 23px;
+    }
+
+    .acciones-cuenta-header {
+        gap: 12px;
+    }
+
+    .volver-tienda {
+        font-size: 12px;
+    }
+
+    .contenedor-cuenta {
+        padding: 30px 15px;
+        align-items: flex-start;
+    }
+
+    .caja-cuenta {
+        padding: 28px 22px;
+    }
+
+    .presentacion-cuenta h1 {
+        font-size: 31px;
+    }
+
+    .formulario-cuenta h2 {
+        font-size: 21px;
+    }
+
+    .footer-cuenta {
+        font-size: 11px;
+    }
+}

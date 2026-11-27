@@ -1,6 +1,8 @@
-/* ==============================
-   CONFIGURACIÓN GENERAL
-   ============================== */
+/* =========================================
+   KHALA - ESTILOS GENERALES
+========================================= */
+
+/* RESET */
 
 * {
     margin: 0;
@@ -10,157 +12,256 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
 body {
     background-color: #fffafa;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 
-/* ==============================
+/* =========================================
    BARRA SUPERIOR
-   ============================== */
+========================================= */
 
 .barra-superior {
-    background-color: #222;
-    color: white;
-
+    background-color: #292326;
+    color: #fff;
     text-align: center;
-
-    padding: 9px 20px;
-
+    padding: 10px 15px;
     font-size: 12px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
 }
 
 
-/* ==============================
-   HEADER
-   ============================== */
+/* =========================================
+   ENCABEZADO
+========================================= */
 
 header {
+    min-height: 85px;
+    padding: 15px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 25px 60px;
-    background-color: #fffafa;
+    gap: 25px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0e5e8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s;
 }
-
-#boton-menu {
-    display: none;
-}
-
-
-
 
 .logo {
-    text-decoration: none;
-
-    color: #d88c9a;
-
-    font-size: 32px;
+    font-family: Georgia, serif;
+    font-size: 34px;
     font-weight: bold;
+    color: #d88c9a;
+    letter-spacing: 2px;
 }
 
-nav {
+header nav {
     display: flex;
-    gap: 35px;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
-nav a {
-    text-decoration: none;
-
-    color: #333;
-
-    font-size: 15px;
-
+header nav a {
+    color: #444;
+    font-size: 14px;
     transition: color 0.3s;
 }
 
-nav a:hover {
+header nav a:hover {
     color: #d88c9a;
 }
 
+
+/* =========================================
+   ACCIONES DEL ENCABEZADO
+========================================= */
+
+.acciones-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.opciones-cuenta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cuenta,
+.crear-cuenta {
+    font-size: 13px;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.cuenta:hover,
+.crear-cuenta:hover {
+    color: #d88c9a;
+}
+
+
+/* =========================================
+   CARRITO - ICONO
+========================================= */
+
 .carrito {
-    text-decoration: none;
-
-    font-size: 20px;
-
-    transition: transform 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #333;
+    transition: color 0.3s;
 }
 
 .carrito:hover {
-    transform: scale(1.1);
+    color: #d88c9a;
+}
+
+.carrito svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+
+.carrito-contador {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 50%;
+    background-color: #d88c9a;
+    color: white;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
-/* ==============================
-   HERO
-   ============================== */
+/* =========================================
+   BOTÓN MODO OSCURO
+========================================= */
 
-.hero {
-    min-height: 600px;
-
-    background-image: url("../img/conjunto.webp");
-
-    background-size: cover;
-    background-position: center;
-
+.modo-oscuro {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    color: #555;
+    font-size: 24px;
     display: flex;
-
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-    text-align: center;
+.modo-oscuro:hover {
+    background-color: #f8e9ed;
+    color: #d88c9a;
+}
+
+.icono-tema {
+    line-height: 1;
+}
+
+
+/* =========================================
+   MENÚ MÓVIL
+========================================= */
+
+#boton-menu {
+    display: none;
+    background: none;
+    border: none;
+    color: #d88c9a;
+    font-size: 25px;
+}
+
+
+/* =========================================
+   HERO - PORTADA
+========================================= */
+
+.hero {
+    min-height: 520px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 250, 250, 0.98),
+            rgba(255, 250, 250, 0.75)
+        ),
+        linear-gradient(135deg, #f3dce1, #f8e9ed);
 }
 
 .hero-contenido {
-    background-color: rgba(255, 250, 250, 0.85);
-
-    padding: 45px 60px;
+    max-width: 570px;
+    padding: 40px;
 }
 
 .hero-subtitulo {
     color: #d88c9a;
-
-    font-size: 13px;
-
+    font-size: 12px;
+    font-weight: bold;
     letter-spacing: 3px;
-
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .hero h2 {
-    font-size: 48px;
-
-    color: #222;
-
-    margin-bottom: 15px;
+    font-family: Georgia, serif;
+    font-size: 52px;
+    font-weight: normal;
+    color: #392d32;
+    margin-bottom: 20px;
 }
 
 .hero-descripcion {
     color: #666;
-
-    font-size: 17px;
-
+    font-size: 16px;
+    line-height: 1.7;
     margin-bottom: 30px;
 }
 
 .hero-boton {
     display: inline-block;
-
+    padding: 14px 30px;
     background-color: #d88c9a;
-
     color: white;
-
-    text-decoration: none;
-
-    padding: 13px 32px;
-
-    font-size: 15px;
-
+    border-radius: 3px;
     transition: background-color 0.3s;
 }
 
@@ -169,305 +270,223 @@ nav a:hover {
 }
 
 
-/* ==============================
-   COLECCIÓN
-   ============================== */
+/* =========================================
+   CATEGORÍAS
+========================================= */
 
 .categorias {
-    padding: 90px 60px;
-
+    padding: 75px 6%;
+    background-color: #fffafa;
     text-align: center;
+    transition: background-color 0.3s;
 }
 
-.categorias h2 {
+.categorias h2,
+.destacados h2 {
+    font-family: Georgia, serif;
     font-size: 32px;
-
     font-weight: normal;
-
-    margin-bottom: 45px;
-
-    color: #333;
+    color: #392d32;
+    margin-bottom: 40px;
 }
 
 .categorias-container {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
-
-    max-width: 1200px;
-
-    margin: 0 auto;
+    gap: 25px;
+    max-width: 1250px;
+    margin: auto;
 }
-
-
-/* TARJETAS */
 
 .categorias-container article {
     background-color: white;
-
+    border-radius: 5px;
     overflow: hidden;
-
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .categorias-container article:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
-
-
-/* IMÁGENES */
 
 .categorias-container article img {
     width: 100%;
-
-    height: 330px;
-
+    height: 280px;
     object-fit: cover;
-
-    display: block;
 }
-
-
-/* NOMBRE */
 
 .categorias-container article h3 {
-    color: #333;
-
     padding: 18px 10px;
-
-    font-size: 16px;
-
+    color: #493940;
+    font-family: Georgia, serif;
+    font-size: 17px;
     font-weight: normal;
 }
 
 
-/* ==============================
+/* =========================================
    PRODUCTOS DESTACADOS
-   ============================== */
+========================================= */
 
 .destacados {
-    padding: 90px 60px;
-
+    padding: 75px 6%;
+    background-color: #f8eff1;
     text-align: center;
-
-    background-color: #ffffff;
-}
-
-.destacados h2 {
-    font-size: 32px;
-
-    font-weight: normal;
-
-    margin-bottom: 45px;
-
-    color: #333;
+    transition: background-color 0.3s;
 }
 
 .productos-container {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 25px;
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
     max-width: 1100px;
-
-    margin: 0 auto;
+    margin: auto;
 }
 
-
-/* PRODUCTO */
-
 .producto {
-    background-color: #fffafa;
-
+    background-color: white;
+    border-radius: 6px;
     overflow: hidden;
-
-    transition: transform 0.3s;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .producto:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
-
-/* IMAGEN */
-
-.producto img {
+.producto > img {
     width: 100%;
-
-    height: 380px;
-
+    height: 350px;
     object-fit: cover;
-
-    display: block;
 }
-
-
-/* INFORMACIÓN */
 
 .producto-info {
-    padding: 20px;
+    padding: 22px 15px;
 }
 
 .producto-info h3 {
-    color: #333;
-
-    font-size: 17px;
-
+    color: #493940;
+    font-family: Georgia, serif;
+    font-size: 20px;
     font-weight: normal;
-
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .producto-info p {
-    color: #555;
-
-    font-size: 16px;
-
+    color: #777;
+    font-size: 17px;
     margin-bottom: 18px;
 }
 
 
-/* BOTÓN */
+/* =========================================
+   BOTONES DE PRODUCTOS
+========================================= */
 
 .producto-boton {
     display: inline-block;
-
-    color: #333;
-
-    border: 1px solid #333;
-
-    padding: 10px 25px;
-
-    text-decoration: none;
-
+    padding: 12px 22px;
+    background-color: #d88c9a;
+    color: white;
+    border: 1px solid #d88c9a;
+    border-radius: 3px;
     font-size: 14px;
-
-    transition: all 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .producto-boton:hover {
-    background-color: #333;
-
-    color: white;
+    background-color: #b96f7d;
+    border-color: #b96f7d;
 }
 
 
-/* ==============================
+/* =========================================
    SOBRE KHALA
-   ============================== */
+========================================= */
 
 .sobre-khala {
-    padding: 110px 60px;
-
-    text-align: center;
-
+    padding: 90px 10%;
     background-color: #fffafa;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
 .sobre-contenido {
-    max-width: 700px;
-
-    margin: 0 auto;
+    max-width: 750px;
+    margin: auto;
 }
 
 .sobre-subtitulo {
     color: #d88c9a;
-
-    font-size: 13px;
-
+    font-size: 12px;
+    font-weight: bold;
     letter-spacing: 3px;
-
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .sobre-khala h2 {
+    font-family: Georgia, serif;
     font-size: 36px;
-
     font-weight: normal;
-
-    color: #333;
-
+    color: #392d32;
     margin-bottom: 25px;
 }
 
 .sobre-khala p {
     color: #666;
-
-    font-size: 17px;
-
-    line-height: 1.8;
-
+    font-size: 16px;
+    line-height: 1.9;
     margin-bottom: 30px;
 }
 
 .sobre-boton {
     display: inline-block;
-
-    color: #333;
-
-    border: 1px solid #333;
-
-    padding: 11px 28px;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    transition: all 0.3s;
+    padding: 13px 28px;
+    background-color: #d88c9a;
+    color: white;
+    border-radius: 3px;
+    transition: background-color 0.3s;
 }
 
 .sobre-boton:hover {
-    background-color: #333;
-
-    color: white;
+    background-color: #b96f7d;
 }
 
 
-/* ==============================
+/* =========================================
    CONTACTO
-   ============================== */
+========================================= */
 
 .contacto {
-    padding: 90px 60px;
-
+    padding: 75px 20px;
+    background-color: #f8eff1;
     text-align: center;
-
-    background-color: white;
+    transition: background-color 0.3s;
 }
 
 .contacto h2 {
-    font-size: 32px;
-
+    font-family: Georgia, serif;
+    font-size: 34px;
     font-weight: normal;
-
+    color: #392d32;
     margin-bottom: 20px;
 }
 
 .contacto p {
     color: #666;
-
-    font-size: 17px;
-
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+    line-height: 1.6;
 }
 
 .contacto-boton {
     display: inline-block;
-
+    padding: 13px 28px;
     background-color: #d88c9a;
-
     color: white;
-
-    text-decoration: none;
-
-    padding: 12px 28px;
-
-    font-size: 14px;
-
+    border-radius: 3px;
     transition: background-color 0.3s;
 }
 
@@ -476,35 +495,281 @@ nav a:hover {
 }
 
 
-/* ==============================
+/* =========================================
    FOOTER
-   ============================== */
+========================================= */
 
 footer {
-    background-color: #222;
-
-    color: white;
-
+    padding: 25px 15px;
+    background-color: #292326;
+    color: #eee;
     text-align: center;
-
-    padding: 25px;
-
     font-size: 13px;
 }
 
 
-/* ==============================
-   RESPONSIVE - TABLET
-   ============================== */
+/* =========================================
+   NOTIFICACIÓN DEL CARRITO
+========================================= */
 
-@media (max-width: 900px) {
+.notificacion-carrito {
+    position: fixed;
+    top: 100px;
+    right: 25px;
+    z-index: 500;
+    padding: 15px 22px;
+    background-color: #30282d;
+    color: white;
+    border-left: 4px solid #d88c9a;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================
+   MODAL DE PRODUCTOS
+========================================= */
+
+.modal-producto {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-producto[hidden],
+.notificacion-carrito[hidden] {
+    display: none !important;
+}
+
+.modal-contenido {
+    position: relative;
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    max-width: 750px;
+    padding: 30px;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+}
+
+.modal-contenido img {
+    width: 45%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-info h2 {
+    font-family: Georgia, serif;
+    color: #493940;
+}
+
+.modal-info p {
+    font-size: 20px;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    color: #555;
+    font-size: 23px;
+}
+
+
+/* =========================================
+   MODO OSCURO - GENERAL
+========================================= */
+
+body.modo-noche {
+    background-color: #211d1f;
+    color: #f5e9ed;
+}
+
+body.modo-noche header {
+    background-color: #292326;
+    border-bottom-color: #493a42;
+}
+
+body.modo-noche header nav a {
+    color: #f5e9ed;
+}
+
+body.modo-noche header nav a:hover {
+    color: #e3a0ad;
+}
+
+body.modo-noche .logo {
+    color: #e3a0ad;
+}
+
+body.modo-noche .cuenta,
+body.modo-noche .crear-cuenta,
+body.modo-noche .modo-oscuro,
+body.modo-noche .carrito {
+    color: #e3a0ad;
+}
+
+body.modo-noche .cuenta:hover,
+body.modo-noche .crear-cuenta:hover,
+body.modo-noche .modo-oscuro:hover {
+    color: #f2bdc7;
+}
+
+
+/* =========================================
+   MODO OSCURO - SECCIONES
+========================================= */
+
+body.modo-noche .categorias,
+body.modo-noche .sobre-khala {
+    background-color: #211d1f;
+}
+
+body.modo-noche .destacados,
+body.modo-noche .contacto {
+    background-color: #2b2528;
+}
+
+
+/* =========================================
+   MODO OSCURO - TÍTULOS Y TEXTOS
+========================================= */
+
+body.modo-noche .categorias h2,
+body.modo-noche .destacados h2,
+body.modo-noche .sobre-khala h2,
+body.modo-noche .contacto h2,
+body.modo-noche .producto-info h3,
+body.modo-noche .categorias-container article h3 {
+    color: #f5e9ed;
+}
+
+body.modo-noche .sobre-khala p,
+body.modo-noche .contacto p,
+body.modo-noche .producto-info p {
+    color: #d8cbd0;
+}
+
+
+/* =========================================
+   MODO OSCURO - TARJETAS
+========================================= */
+
+body.modo-noche .categorias-container article,
+body.modo-noche .producto {
+    background-color: #30282d;
+    border: 1px solid #493a42;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+body.modo-noche .categorias-container article:hover,
+body.modo-noche .producto:hover {
+    border-color: #d88c9a;
+}
+
+
+/* =========================================
+   MODO OSCURO - BOTONES
+========================================= */
+
+body.modo-noche .producto-boton,
+body.modo-noche .sobre-boton,
+body.modo-noche .hero-boton,
+body.modo-noche .contacto-boton {
+    background-color: #d88c9a;
+    color: #fff;
+    border-color: #d88c9a;
+}
+
+body.modo-noche .producto-boton:hover,
+body.modo-noche .sobre-boton:hover,
+body.modo-noche .hero-boton:hover,
+body.modo-noche .contacto-boton:hover {
+    background-color: #b96f7d;
+    border-color: #b96f7d;
+    color: #fff;
+}
+
+
+/* =========================================
+   MODO OSCURO - HERO
+========================================= */
+
+body.modo-noche .hero {
+    background: linear-gradient(135deg, #30282d, #211d1f);
+}
+
+body.modo-noche .hero-contenido {
+    background-color: transparent;
+}
+
+body.modo-noche .hero h2 {
+    color: #f5e9ed;
+}
+
+body.modo-noche .hero-descripcion {
+    color: #d8cbd0;
+}
+
+
+/* =========================================
+   MODO OSCURO - MODAL Y NOTIFICACIONES
+========================================= */
+
+body.modo-noche .modal-contenido,
+body.modo-noche .notificacion-carrito {
+    background-color: #30282d;
+    color: #f5e9ed;
+}
+
+body.modo-noche .modal-info h2,
+body.modo-noche .modal-info p,
+body.modo-noche .cerrar-modal {
+    color: #f5e9ed;
+}
+
+
+/* =========================================
+   MODO OSCURO - CONTADOR
+========================================= */
+
+body.modo-noche .carrito-contador {
+    background-color: #d88c9a;
+    color: #fff;
+    border: 1px solid #f5e9ed;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLETS
+========================================= */
+
+@media (max-width: 950px) {
 
     header {
-        padding: 20px 30px;
+        padding: 15px 3%;
+        gap: 15px;
     }
 
-    nav {
-        gap: 20px;
+    header nav {
+        gap: 15px;
     }
 
     .categorias-container {
@@ -512,65 +777,82 @@ footer {
     }
 
     .productos-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero h2 {
+        font-size: 42px;
     }
 
 }
 
-@media (max-width: 600px) {
-    
-#boton-menu {
-    display: block;
-}
 
-
-/* ==============================
-   RESPONSIVE - CELULAR
-   ============================== */
+/* =========================================
+   RESPONSIVE - CELULARES
+========================================= */
 
 @media (max-width: 600px) {
-
-    #boton-menu {
-        display: block;
-    }
 
     .barra-superior {
         font-size: 10px;
+        padding: 9px 5px;
     }
-
- 
-
-    /* HEADER */
 
     header {
-        padding: 20px;
-
-        flex-direction: column;
-
-        gap: 20px;
+        min-height: 70px;
+        padding: 12px 5%;
+        flex-wrap: wrap;
     }
 
-    nav {
-        gap: 18px;
+    .logo {
+        font-size: 29px;
     }
 
-    nav a {
-        font-size: 13px;
+    #boton-menu {
+        display: block;
+        order: 2;
     }
 
-    .carrito {
+    header nav {
         display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        order: 4;
+        padding-top: 10px;
+        border-top: 1px solid #f0e5e8;
     }
 
+    header nav a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
 
-    /* HERO */
+    header nav.activo {
+        display: flex;
+    }
+
+    .acciones-header {
+        gap: 10px;
+    }
+
+    .opciones-cuenta {
+        gap: 8px;
+    }
+
+    .cuenta,
+    .crear-cuenta {
+        font-size: 11px;
+    }
 
     .hero {
-        min-height: 500px;
+        min-height: 400px;
+        padding: 45px 5%;
     }
 
     .hero-contenido {
-        padding: 30px 25px;
+        padding: 15px;
     }
 
     .hero h2 {
@@ -578,84 +860,67 @@ footer {
     }
 
     .hero-descripcion {
-        font-size: 15px;
+        font-size: 14px;
     }
 
-
-    /* COLECCIÓN */
-
-    .categorias {
-        padding: 70px 20px;
+    .categorias,
+    .destacados {
+        padding: 50px 5%;
     }
 
-    .categorias h2 {
-        font-size: 28px;
+    .categorias h2,
+    .destacados h2 {
+        font-size: 27px;
+        margin-bottom: 25px;
     }
 
     .categorias-container {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
     .categorias-container article img {
-        height: 400px;
+        height: 190px;
     }
 
-
-    /* PRODUCTOS */
-
-    .destacados {
-        padding: 70px 20px;
-    }
-
-    .destacados h2 {
-        font-size: 28px;
+    .categorias-container article h3 {
+        font-size: 14px;
+        padding: 12px 5px;
     }
 
     .productos-container {
         grid-template-columns: 1fr;
+        gap: 25px;
     }
 
-    .producto img {
-        height: 420px;
+    .producto > img {
+        height: 330px;
     }
-
-
-    /* SOBRE KHALA */
 
     .sobre-khala {
-        padding: 80px 25px;
+        padding: 60px 7%;
     }
 
     .sobre-khala h2 {
-        font-size: 30px;
+        font-size: 29px;
     }
-
-    .sobre-khala p {
-        font-size: 15px;
-    }
-
-
-    /* CONTACTO */
 
     .contacto {
-        padding: 70px 25px;
+        padding: 55px 20px;
     }
 
-    .contacto h2 {
-        font-size: 28px;
-    }
-
-    .contacto p {
-        font-size: 15px;
-    }
-
-
-    /* FOOTER */
-
-    footer {
+    .modal-contenido {
+        flex-direction: column;
         padding: 20px;
+    }
+
+    .modal-contenido img {
+        width: 100%;
+        max-height: 260px;
+    }
+
+    body.modo-noche header nav {
+        border-top-color: rgba(216, 140, 154, 0.3);
     }
 
 }

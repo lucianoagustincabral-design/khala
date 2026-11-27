@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Khala</title>
+    <link rel="stylesheet" href="khala/khala/css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #141213;
+            color: #f4eef1;
+            min-height: 100vh;
+        }
+
+        body.claro,
+        body.light-mode,
+        body.tema-claro {
+            background-color: #f5f2f4;
+            color: #1e191c;
+        }
+
+        header {
+            background-color: #1e1a1c;
+            border-bottom: 1px solid #332c30;
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        body.claro header,
+        body.light-mode header,
+        body.tema-claro header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e4dce1;
+        }
+
+        header nav {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        header nav > a {
+            color: #f4eef1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        body.claro header nav > a,
+        body.light-mode header nav > a,
+        body.tema-claro header nav > a {
+            color: #1e191c;
+        }
+
+        header nav > a:hover {
+            color: #e093a5;
+        }
+
+        .barra-derecha-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .opciones-cuenta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #e2d8dd;
+        }
+
+        body.claro .opciones-cuenta,
+        body.light-mode .opciones-cuenta,
+        body.tema-claro .opciones-cuenta {
+            color: #3a3237;
+        }
+
+        .opciones-cuenta a {
+            color: #e093a5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .opciones-cuenta button,
+        #seccion-pedidos button,
+        #resumen-auditoria button,
+        .acciones-abm button,
+        #btn-restaurar-productos,
+        .btn-abm-accion {
+            background-color: #d88b9d;
+            color: #191114;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: transform 0.12s ease, opacity 0.15s ease;
+        }
+
+        .opciones-cuenta button:hover,
+        #seccion-pedidos button:hover,
+        #resumen-auditoria button:hover,
+        .acciones-abm button:hover,
+        #btn-restaurar-productos:hover,
+        .btn-abm-accion:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-abm-eliminar {
+            background-color: #6e2b3a !important;
+            color: #ffffff !important;
+        }
+
+        #btn-tema-panel {
+            background-color: #2b2528;
+            color: #f4eef1;
+            border: 1px solid #443b40;
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        body.claro #btn-tema-panel,
+        body.light-mode #btn-tema-panel,
+        body.tema-claro #btn-tema-panel {
+            background-color: #f3edf0;
+            color: #1e191c;
+            border: 1px solid #d8cdd3;
+        }
+
+        #panel-protegido {
+            max-width: 1060px;
+            margin: 32px auto;
+            padding: 0 24px 56px;
+        }
+
+        .encabezado-panel {
+            margin-bottom: 24px;
+        }
+
+        #panel-protegido h1 {
+            margin: 0 0 6px;
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        body.claro #panel-protegido h1,
+        body.light-mode #panel-protegido h1,
+        body.tema-claro #panel-protegido h1 {
+            color: #1a1518;
+        }
+
+        #bienvenida-admin {
+            margin: 0;
+            color: #b7aab1;
+            font-size: 0.95rem;
+        }
+
+        body.claro #bienvenida-admin,
+        body.light-mode #bienvenida-admin,
+        body.tema-claro #bienvenida-admin {
+            color: #63585f;
+        }
+
+        #resumen-metricas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        #resumen-metricas > div {
+            background-color: #1f1b1d;
+            border: 1px solid #352e32;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #f4eef1;
+        }
+
+        body.claro #resumen-metricas > div,
+        body.light-mode #resumen-metricas > div,
+        body.tema-claro #resumen-metricas > div {
+            background-color: #ffffff;
+            border: 1px solid #e4dce1;
+            color: #1e191c;
+        }
+
+        #resumen-metricas span {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #e295a7;
+        }
+
+        body.claro #resumen-metricas span,
+        body.light-mode #resumen-metricas span,
+        body.tema-claro #resumen-metricas span {
+            color: #b85d74;
+        }
+
+        #seccion-pedidos,
+        #resumen-auditoria,
+        .bloque-panel-khala {
+            background-color: #1f1b1d;
+            border: 1px solid #352e32;
+            border-radius: 16px;
+            padding: 22px 24px;
+            margin-bottom: 24px;
+            color: #f4eef1;
+        }
+
+        body.claro #seccion-pedidos,
+        body.light-mode #seccion-pedidos,
+        body.tema-claro #seccion-pedidos,
+        body.claro #resumen-auditoria,
+        body.light-mode #resumen-auditoria,
+        body.tema-claro #resumen-auditoria,
+        body.claro .bloque-panel-khala,
+        body.light-mode .bloque-panel-khala,
+        body.tema-claro .bloque-panel-khala {
+            background-color: #ffffff;
+            border: 1px solid #e4dce1;
+            color: #1e191c;
+        }
+
+        .cabecera-seccion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        #seccion-pedidos h2,
+        #resumen-auditoria h2,
+        .bloque-panel-khala h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: inherit;
+        }
+
+        .form-abm-khala {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .campo-abm {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.88rem;
+        }
+
+        .campo-abm input,
+        .campo-abm select {
+            padding: 9px 12px;
+            border-radius: 8px;
+            border: 1px solid #443b40;
+            background-color: #161315;
+            color: #f4eef1;
+        }
+
+        body.claro .campo-abm input,
+        body.light-mode .campo-abm input,
+        body.tema-claro .campo-abm input,
+        body.claro .campo-abm select,
+        body.light-mode .campo-abm select,
+        body.tema-claro .campo-abm select {
+            background-color: #f8f4f6;
+            color: #1e191c;
+            border-color: #d8cdd3;
+        }
+
+        .acciones-abm {
+            display: flex;
+            gap: 8px;
+        }
+
+        .tabla-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        #tabla-pedidos,
+        #tabla-productos-abm {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            color: inherit;
+        }
+
+        #tabla-pedidos th,
+        #tabla-pedidos td,
+        #tabla-productos-abm th,
+        #tabla-productos-abm td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid #312a2e;
+            color: inherit;
+        }
+
+        body.claro #tabla-pedidos th,
+        body.light-mode #tabla-pedidos th,
+        body.tema-claro #tabla-pedidos th,
+        body.claro #tabla-pedidos td,
+        body.light-mode #tabla-pedidos td,
+        body.tema-claro #tabla-pedidos td,
+        body.claro #tabla-productos-abm th,
+        body.light-mode #tabla-productos-abm th,
+        body.tema-claro #tabla-productos-abm th,
+        body.claro #tabla-productos-abm td,
+        body.light-mode #tabla-productos-abm td,
+        body.tema-claro #tabla-productos-abm td {
+            border-bottom: 1px solid #ece4e9;
+        }
+
+        #tabla-pedidos th,
+        #tabla-productos-abm th {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #b7aab1;
+        }
+
+        body.claro #tabla-pedidos th,
+        body.light-mode #tabla-pedidos th,
+        body.tema-claro #tabla-pedidos th,
+        body.claro #tabla-productos-abm th,
+        body.light-mode #tabla-productos-abm th,
+        body.tema-claro #tabla-productos-abm th {
+            color: #6c6068;
+        }
+
+        .mini-thumb-abm {
+            width: 44px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        #lista-auditoria {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #lista-auditoria li {
+            background-color: #161315;
+            border: 1px solid #2e272b;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+            color: #ebe2e7;
+        }
+
+        body.claro #lista-auditoria li,
+        body.light-mode #lista-auditoria li,
+        body.tema-claro #lista-auditoria li {
+            background-color: #f8f4f6;
+            border: 1px solid #e7dfe4;
+            color: #241e22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">← Volver a la tienda</a>
+            <div class="barra-derecha-header">
+                <div class="opciones-cuenta"></div>
+                <button id="btn-tema-panel" class="modo-oscuro" type="button" aria-label="Cambiar tema" title="Cambiar tema">
+                    <span id="icono-tema-panel">☀</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="panel-protegido" style="display: none;">
+        <div class="encabezado-panel">
+            <h1>Panel de Control — Khala</h1>
+            <p id="bienvenida-admin"></p>
+        </div>
+
+        <section id="resumen-metricas">
+            <div><strong>Pedidos:</strong> <span id="total-pedidos">0</span></div>
+            <div><strong>Eventos de acceso:</strong> <span id="total-eventos">0</span></div>
+        </section>
+
+        <section id="seccion-abm-productos" class="bloque-panel-khala">
+            <div class="cabecera-seccion">
+                <h2>ABM de Productos (Catálogo)</h2>
+                <button type="button" id="btn-restaurar-productos">Restaurar base</button>
+            </div>
+
+            <form id="form-abm-producto" class="form-abm-khala">
+                <input type="hidden" id="producto-id-edicion">
+
+                <div class="campo-abm">
+                    <label for="producto-nombre">Nombre del conjunto</label>
+                    <input type="text" id="producto-nombre" placeholder="Ej. Conjunto Luna" required>
+                </div>
+
+                <div class="campo-abm">
+                    <label for="producto-precio">Precio ($)</label>
+                    <input type="number" id="producto-precio" min="1" step="1" placeholder="Ej. 32000" required>
+                </div>
+
+                <div class="campo-abm">
+                    <label for="producto-imagen">Imagen</label>
+                    <select id="producto-imagen">
+                        <option value="khala/khala/img/conjunto.webp">conjunto.webp</option>
+                        <option value="khala/khala/img/conjuntoSol.webp">conjuntoSol.webp</option>
+                        <option value="khala/khala/img/conjuntoMila.webp">conjuntoMila.webp</option>
+                        <option value="khala/khala/img/conjuntomoni.webp">conjuntomoni.webp</option>
+                    </select>
+                </div>
+
+                <div class="acciones-abm">
+                    <button type="submit" id="btn-guardar-producto">Guardar producto</button>
+                    <button type="button" id="btn-cancelar-edicion" hidden>Cancelar</button>
+                </div>
+            </form>
+
+            <div class="tabla-responsive">
+                <table id="tabla-productos-abm">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-productos-abm"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="seccion-pedidos">
+            <div class="cabecera-seccion">
+                <h2>Pedidos / Compras</h2>
+                <button type="button" id="btn-limpiar-pedidos">Limpiar pedidos</button>
+            </div>
+            <div class="tabla-responsive">
+                <table id="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th>ID / Fecha</th>
+                            <th>Cliente / Medio</th>
+                            <th>Resumen</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-pedidos"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="resumen-auditoria">
+            <div class="cabecera-seccion">
+                <h2>Auditoría de Accesos</h2>
+                <button type="button" id="btn-limpiar-auditoria">Limpiar historial</button>
+            </div>
+            <ul id="lista-auditoria"></ul>
+        </section>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="khala/khala/js/tema.js"></script>
+    <script src="khala/khala/js/logica.js"></script>
+    <script src="khala/khala/js/sesion.js"></script>
+    <script src="khala/khala/js/panel.js"></script>
+    <script>
+        (function () {
+            const btnTema = document.getElementById("btn-tema-panel");
+            const iconoTema = document.getElementById("icono-tema-panel");
+            if (!btnTema) return;
+
+            function sincronizarIcono() {
+                const esClaro =
+                    document.body.classList.contains("claro") ||
+                    document.body.classList.contains("light-mode") ||
+                    document.body.classList.contains("tema-claro");
+                if (iconoTema) {
+                    iconoTema.textContent = esClaro ? "☾" : "☀";
+                }
+            }
+
+            btnTema.addEventListener("click", () => {
+                const botonGlobal = document.querySelector("#modo-oscuro, .modo-oscuro:not(#btn-tema-panel)");
+                if (botonGlobal) {
+                    botonGlobal.click();
+                } else {
+                    document.body.classList.toggle("claro");
+                    localStorage.setItem("temaKhala", document.body.classList.contains("claro") ? "claro" : "oscuro");
+                }
+                setTimeout(sincronizarIcono, 20);
+            });
+
+            window.addEventListener("DOMContentLoaded", () => {
+                const guardado = localStorage.getItem("temaKhala") || localStorage.getItem("tema");
+                if (guardado === "claro" || guardado === "light") {
+                    document.body.classList.add("claro");
+                }
+                sincronizarIcono();
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            const CLAVE_PRODUCTOS = "khala_productos";
+            const form = document.getElementById("form-abm-producto");
+            const tbody = document.getElementById("cuerpo-productos-abm");
+            const inputId = document.getElementById("producto-id-edicion");
+            const inputNombre = document.getElementById("producto-nombre");
+            const inputPrecio = document.getElementById("producto-precio");
+            const selectImagen = document.getElementById("producto-imagen");
+            const btnGuardar = document.getElementById("btn-guardar-producto");
+            const btnCancelar = document.getElementById("btn-cancelar-edicion");
+            const btnRestaurar = document.getElementById("btn-restaurar-productos");
+
+            if (!form || !tbody) return;
+
+            const productosBase = [
+                { id: 1, nombre: "Conjunto Khala", precio: 25000, imagen: "khala/khala/img/conjunto.webp" },
+                { id: 2, nombre: "Conjunto Sol", precio: 30000, imagen: "khala/khala/img/conjuntoSol.webp" },
+                { id: 3, nombre: "Conjunto Mila", precio: 28000, imagen: "khala/khala/img/conjuntoMila.webp" },
+                { id: 4, nombre: "Conjunto Moni", precio: 27000, imagen: "khala/khala/img/conjuntomoni.webp" }
+            ];
+
+            function leerProductos() {
+                try {
+                    const raw = localStorage.getItem(CLAVE_PRODUCTOS);
+                    if (!raw) {
+                        localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productosBase));
+                        return [...productosBase];
+                    }
+                    const data = JSON.parse(raw);
+                    return Array.isArray(data) ? data : [...productosBase];
+                } catch {
+                    return [...productosBase];
+                }
+            }
+
+            function guardarProductos(lista) {
+                localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(lista));
+                renderizarTabla();
+            }
+
+            function resetearFormulario() {
+                inputId.value = "";
+                form.reset();
+                btnGuardar.textContent = "Guardar producto";
+                btnCancelar.hidden = true;
+            }
+
+            function renderizarTabla() {
+                const lista = leerProductos();
+                if (!lista.length) {
+                    tbody.innerHTML = `<tr><td colspan="4">No hay productos cargados.</td></tr>`;
+                    return;
+                }
+                tbody.innerHTML = lista.map((p) => `
+                    <tr>
+                        <td><img src="${p.imagen}" alt="${p.nombre}" class="mini-thumb-abm"></td>
+                        <td>${p.nombre}</td>
+                        <td>$${Number(p.precio || 0).toLocaleString("es-AR")}</td>
+                        <td>
+                            <button type="button" class="btn-abm-accion" data-accion="editar" data-id="${p.id}">Editar</button>
+                            <button type="button" class="btn-abm-accion btn-abm-eliminar" data-accion="eliminar" data-id="${p.id}">Eliminar</button>
+                        </td>
+                    </tr>
+                `).join("");
+            }
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const nombre = inputNombre.value.trim();
+                const precio = Number(inputPrecio.value);
+                const imagen = selectImagen.value;
+                if (!nombre || !precio || precio <= 0) return;
+
+                const lista = leerProductos();
+                const idEdicion = inputId.value;
+
+                if (idEdicion) {
+                    const idx = lista.findIndex((item) => String(item.id) === String(idEdicion));
+                    if (idx !== -1) {
+                        lista[idx] = { ...lista[idx], nombre, precio, imagen };
+                    }
+                } else {
+                    const nuevoId = lista.length ? Math.max(...lista.map((x) => Number(x.id) || 0)) + 1 : 1;
+                    lista.push({ id: nuevoId, nombre, precio, imagen });
+                }
+
+                guardarProductos(lista);
+                resetearFormulario();
+            });
+
+            tbody.addEventListener("click", (e) => {
+                const btn = e.target.closest("button[data-accion]");
+                if (!btn) return;
+                const id = btn.dataset.id;
+                const accion = btn.dataset.accion;
+                const lista = leerProductos();
+
+                if (accion === "editar") {
+                    const prod = lista.find((item) => String(item.id) === String(id));
+                    if (!prod) return;
+                    inputId.value = prod.id;
+                    inputNombre.value = prod.nombre;
+                    inputPrecio.value = prod.precio;
+                    selectImagen.value = prod.imagen || "khala/khala/img/conjunto.webp";
+                    btnGuardar.textContent = "Actualizar";
+                    btnCancelar.hidden = false;
+                }
+
+                if (accion === "eliminar") {
+                    const filtrada = lista.filter((item) => String(item.id) !== String(id));
+                    guardarProductos(filtrada);
+                    if (String(inputId.value) === String(id)) resetearFormulario();
+                }
+            });
+
+            btnCancelar.addEventListener("click", resetearFormulario);
+
+            if (btnRestaurar) {
+                btnRestaurar.addEventListener("click", () => {
+                    guardarProductos([...productosBase]);
+                    resetearFormulario();
+                });
+            }
+
+            window.addEventListener("DOMContentLoaded", renderizarTabla);
+        })();
+    </script>
+</body>
+</html>

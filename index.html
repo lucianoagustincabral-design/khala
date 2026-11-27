@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,7 +7,74 @@
 
     <title>Khala | Ropa Interior Femenina</title>
 
-    <link rel="stylesheet" href="../khala/css/style.css">
+    <link rel="stylesheet" href="khala/khala/css/style.css">
+
+    <style>
+        .carrusel-khala {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .carrusel-khala .productos-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            scrollbar-width: none;
+            width: 100%;
+        }
+
+        .carrusel-khala .productos-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carrusel-khala .producto {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 768px) {
+            .carrusel-khala .producto {
+                flex: 0 0 calc(33.333% - 14px);
+            }
+        }
+
+        .carrusel-btn {
+            background-color: #d88b9d;
+            color: #191114;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .carrusel-indicadores {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .carrusel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background-color: #6b5e65;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .carrusel-dot.activo {
+            background-color: #d88b9d;
+        }
+    </style>
 </head>
 
 <body>
@@ -143,25 +209,25 @@
             <div class="categorias-container">
 
                 <article>
-                    <img src="../khala/img/conjunto.webp"
+                    <img src="khala/khala/img/conjunto.webp"
                         alt="Conjunto de ropa interior de algodón">
                     <h3>Conjunto Algodón</h3>
                 </article>
 
                 <article>
-                    <img src="../khala/img/conjuntoSol.webp"
+                    <img src="khala/khala/img/conjuntoSol.webp"
                         alt="Conjunto Sol">
                     <h3>Conjunto Sol</h3>
                 </article>
 
                 <article>
-                    <img src="../khala/img/conjuntoMila.webp"
+                    <img src="khala/khala/img/conjuntoMila.webp"
                         alt="Conjunto Mila">
                     <h3>Conjunto Mila</h3>
                 </article>
 
                 <article>
-                    <img src="../khala/img/conjuntomoni.webp"
+                    <img src="khala/khala/img/conjuntomoni.webp"
                         alt="Conjunto Moni">
                     <h3>Conjunto Moni</h3>
                 </article>
@@ -170,69 +236,62 @@
 
         </section>
 
-        <!-- PRODUCTOS DESTACADOS -->
+        <!-- PRODUCTOS DESTACADOS (CARRUSEL) -->
 
-        <section class="destacados">
+        <section class="destacados" aria-label="Productos destacados">
 
             <h2>Productos destacados</h2>
 
-            <div class="productos-container">
+            <div class="carrusel-khala" data-carrusel>
 
-                <article class="producto">
+                <button type="button" class="carrusel-btn carrusel-prev" aria-label="Producto anterior">
+                    ‹
+                </button>
 
-                    <img src="../khala/img/conjunto.webp" alt="Conjunto Khala">
+                <div class="productos-container" id="carrusel-productos">
 
-                    <div class="producto-info">
+                    <article class="producto" data-id="1">
+                        <img src="khala/khala/img/conjunto.webp" alt="Conjunto Khala">
+                        <div class="producto-info">
+                            <h3>Conjunto Khala</h3>
+                            <p>$25.000</p>
+                            <button type="button" class="producto-boton agregar-carrito">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </article>
 
-                        <h3>Conjunto Khala</h3>
+                    <article class="producto" data-id="2">
+                        <img src="khala/khala/img/conjuntoSol.webp" alt="Conjunto Sol">
+                        <div class="producto-info">
+                            <h3>Conjunto Sol</h3>
+                            <p>$30.000</p>
+                            <button type="button" class="producto-boton agregar-carrito">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </article>
 
-                        <p>$25.000</p>
+                    <article class="producto" data-id="3">
+                        <img src="khala/khala/img/conjuntoMila.webp" alt="Conjunto Mila">
+                        <div class="producto-info">
+                            <h3>Conjunto Mila</h3>
+                            <p>$28.000</p>
+                            <button type="button" class="producto-boton agregar-carrito">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </article>
 
-                        <button type="button" class="producto-boton agregar-carrito">
-                            Agregar al carrito
-                        </button>
+                </div>
 
-                    </div>
-
-                </article>
-
-                <article class="producto">
-
-                    <img src="../khala/img/conjuntoSol.webp" alt="Conjunto Sol">
-
-                    <div class="producto-info">
-
-                        <h3>Conjunto Sol</h3>
-
-                        <p>$30.000</p>
-
-                        <button type="button" class="producto-boton agregar-carrito">
-                            Agregar al carrito
-                        </button>
-
-                    </div>
-
-                </article>
-
-                <article class="producto">
-
-                    <img src="../khala/img/conjuntoMila.webp" alt="Conjunto Mila">
-
-                    <div class="producto-info">
-
-                        <h3>Conjunto Mila</h3>
-
-                        <p>$28.000</p>
-
-                        <button type="button" class="producto-boton agregar-carrito">
-                            Agregar al carrito
-                        </button>
-
-                    </div>
-
-                </article>
+                <button type="button" class="carrusel-btn carrusel-next" aria-label="Producto siguiente">
+                    ›
+                </button>
 
             </div>
+
+            <div class="carrusel-indicadores" id="carrusel-indicadores" aria-label="Indicadores del carrusel"></div>
 
         </section>
 
@@ -283,9 +342,108 @@
     </footer>
 
     <!-- JAVASCRIPT -->
-<script src="../khala/js/tema.js"></script>
-<script src="../khala/js/logica.js"></script>
-<script src="../khala/js/sesion.js"></script>
-<script src="../khala/js/script.js"></script>
+    <script src="khala/khala/js/tema.js"></script>
+    <script src="khala/khala/js/logica.js"></script>
+    <script src="khala/khala/js/sesion.js"></script>
+    <script src="khala/khala/js/script.js"></script>
+    <script>
+        (function () {
+            const CLAVE_PRODUCTOS = "khala_productos";
+            const contenedor = document.getElementById("carrusel-productos");
+            const indicadores = document.getElementById("carrusel-indicadores");
+            const btnPrev = document.querySelector(".carrusel-prev");
+            const btnNext = document.querySelector(".carrusel-next");
+
+            if (!contenedor) return;
+
+            const productosBase = [
+                { id: 1, nombre: "Conjunto Khala", precio: 25000, imagen: "khala/khala/img/conjunto.webp" },
+                { id: 2, nombre: "Conjunto Sol", precio: 30000, imagen: "khala/khala/img/conjuntoSol.webp" },
+                { id: 3, nombre: "Conjunto Mila", precio: 28000, imagen: "khala/khala/img/conjuntoMila.webp" },
+                { id: 4, nombre: "Conjunto Moni", precio: 27000, imagen: "khala/khala/img/conjuntomoni.webp" }
+            ];
+
+            function obtenerProductos() {
+                try {
+                    const raw = localStorage.getItem(CLAVE_PRODUCTOS);
+                    if (!raw) {
+                        localStorage.setItem(CLAVE_PRODUCTOS, JSON.stringify(productosBase));
+                        return productosBase;
+                    }
+                    const parsed = JSON.parse(raw);
+                    return Array.isArray(parsed) && parsed.length ? parsed : productosBase;
+                } catch {
+                    return productosBase;
+                }
+            }
+
+            function formatearPrecio(valor) {
+                const num = Number(valor) || 0;
+                return "$" + num.toLocaleString("es-AR");
+            }
+
+            let indiceActual = 0;
+
+            function renderizarCarrusel() {
+                const lista = obtenerProductos();
+                contenedor.innerHTML = lista.map((prod) => `
+                    <article class="producto" data-id="${prod.id}">
+                        <img src="${prod.imagen || "khala/khala/img/conjunto.webp"}" alt="${prod.nombre}">
+                        <div class="producto-info">
+                            <h3>${prod.nombre}</h3>
+                            <p>${formatearPrecio(prod.precio)}</p>
+                            <button type="button" class="producto-boton agregar-carrito"
+                                data-id="${prod.id}"
+                                data-nombre="${prod.nombre}"
+                                data-precio="${Number(prod.precio) || 0}">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </article>
+                `).join("");
+
+                construirIndicadores(lista.length);
+                actualizarPosicion(0);
+            }
+
+            function construirIndicadores(total) {
+                if (!indicadores) return;
+                indicadores.innerHTML = "";
+                for (let i = 0; i < total; i++) {
+                    const dot = document.createElement("button");
+                    dot.type = "button";
+                    dot.className = "carrusel-dot" + (i === 0 ? " activo" : "");
+                    dot.setAttribute("aria-label", `Ir al producto ${i + 1}`);
+                    dot.addEventListener("click", () => actualizarPosicion(i));
+                    indicadores.appendChild(dot);
+                }
+            }
+
+            function actualizarPosicion(nuevoIndice) {
+                const tarjetas = contenedor.querySelectorAll(".producto");
+                if (!tarjetas.length) return;
+                const total = tarjetas.length;
+                indiceActual = ((nuevoIndice % total) + total) % total;
+
+                const tarjetaActiva = tarjetas[indiceActual];
+                contenedor.scrollTo({
+                    left: tarjetaActiva.offsetLeft - contenedor.offsetLeft,
+                    behavior: "smooth"
+                });
+
+                if (indicadores) {
+                    indicadores.querySelectorAll(".carrusel-dot").forEach((dot, idx) => {
+                        dot.classList.toggle("activo", idx === indiceActual);
+                    });
+                }
+            }
+
+            if (btnPrev) btnPrev.addEventListener("click", () => actualizarPosicion(indiceActual - 1));
+            if (btnNext) btnNext.addEventListener("click", () => actualizarPosicion(indiceActual + 1));
+
+            window.addEventListener("DOMContentLoaded", renderizarCarrusel);
+        })();
+    </script>
 </body>
+
 </html>
